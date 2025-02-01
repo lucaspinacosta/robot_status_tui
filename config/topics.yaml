@@ -1,21 +1,42 @@
+# monitored_topics:
+#   - name: "/odometry"
+#     type: "nav_msgs/Odometry"
+#   - name: "/imu_data"
+#     type: "sensor_msgs/Imu"
+#   - name: "/battery_status"
+#     type: "sensor_msgs/BatteryState"
+#   - name: "/geographic_position"
+#     type: "geographic_msgs/GeoPoint"
+#   - name: "/geographic_pose"
+#     type: "geographic_msgs/GeoPose"
+
+# monitored_hardware:
+#   - name: "Network"
+#     type: "eth0"
 monitored_topics:
   - name: "/odometry"
     type: "nav_msgs/Odometry"
-    width: 20
-    height: 20
   - name: "/imu_data"
     type: "sensor_msgs/Imu"
-    width: 20
-    height: 16
   - name: "/battery_status"
     type: "sensor_msgs/BatteryState"
-    width: 20
-    height: 16
   - name: "/geographic_position"
     type: "geographic_msgs/GeoPoint"
-    width: 20
-    height: 16
   - name: "/geographic_pose"
     type: "geographic_msgs/GeoPose"
-    width: 20
-    height: 16
+  - name: "/pcl_data"
+    type: "senster_msgs/PointCloud2"
+  - name: "/camera_data"
+    type: "sensor_msgs/Image"
+
+monitored_hardware:
+  - name: "Network"
+    device: "lo"
+  - name: "CPU"
+    device: ""
+  - name: "GPU"
+    device: ""
+  - name: "RAM"
+    device: ""
+  - name: "Disk"
+    device: "/"

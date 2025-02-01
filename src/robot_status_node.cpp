@@ -1,33 +1,26 @@
+#include "robot_status_tui/status_tui.h"
 #include <ros/ros.h>
 #include <ncurses.h>
-#include "robot_status_tui/status_tui.h"
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "robot_status_node");
-    ros::NodeHandle nh("~");
+    ros::init(argc, argv, "robot_status_tui");
+    ros::NodeHandle nh;
 
-    // Initialize ncurses
+    // Initialize curses.
     initscr();
     cbreak();
     noecho();
     keypad(stdscr, TRUE);
-    curs_set(0);
-    start_color();
 
-    // Create the TUI object
-    StatusTUI tui(nh);
+    // Create your TUI instance.
+    StatusTUI statusTUI(nh);
 
-    // Main loop
-    while (ros::ok())
-    {
-        tui.updateDisplay();
-        ros::spinOnce();
-        // Sleep for 50ms
-        napms(50);
-    }
+    // Run the TUI main loop.
+    statusTUI.run();
 
-    // Shutdown ncurses
+    // Clean up curses.
     endwin();
+
     return 0;
 }

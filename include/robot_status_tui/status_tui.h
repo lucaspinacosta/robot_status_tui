@@ -1,5 +1,6 @@
-#ifndef ROBOT_STATUS_TUI_H
-#define ROBOT_STATUS_TUI_H
+#ifndef STATUS_TUI_H
+#define STATUS_TUI_H
+
 
 #include <ros/ros.h>
 #include <ncurses.h>
@@ -11,7 +12,7 @@
 #include <string>
 #include <sstream>
 #include <boost/bind.hpp>
-#include <cmath>  // for std::ceil and std::sqrt
+#include <cmath> 
 
 // Include any additional message headers you need:
 #include <sensor_msgs/Imu.h>
@@ -40,37 +41,65 @@
 #include <geographic_msgs/GeoPoint.h>
 #include <geographic_msgs/GeoPose.h>
 #include <geographic_msgs/GeoPath.h>
+#include <geographic_msgs/RouteNetwork.h>
 
-struct TopicDisplay
-{
+// Structure for topic displays.
+struct TopicDisplay {
     std::string name;
     std::string type;
-    WINDOW *win;
-    std::string content;
     int width;
     int height;
     int pos_x;
     int pos_y;
+    WINDOW *win;
+    std::string content;
 };
 
-class StatusTUI
-{
+// Structure for hardware displays.
+struct HardwareDisplay {
+    std::string name;
+    std::string device;
+    int width;
+    int height;
+    int pos_x;
+    int pos_y;
+    WINDOW *win;
+    std::string content;
+};
+
+enum DisplayMode {
+    TOPICS = 1,
+    HARDWARE = 2
+};
+
+class StatusTUI {
 public:
-    explicit StatusTUI(ros::NodeHandle &nh);
+    // Constructor and destructor.
+    StatusTUI(ros::NodeHandle &nh);
     ~StatusTUI();
 
+    // Functions to update displays.
     void updateDisplay();
+    void updateHardwareDisplay();
+
+    // New function to run the main loop and handle input.
+    void run();
 
 private:
-    void topicCallback(const topic_tools::ShapeShifter::ConstPtr &msg,
-                       const std::string &topic_name);
+    // Callback for topic messages.
+    void topicCallback(const topic_tools::ShapeShifter::ConstPtr &msg, const std::string &topic_name);
     void formatMessage(const topic_tools::ShapeShifter &msg, std::stringstream &ss);
-
-    // Add the declaration of updateLayout() here:
     void updateLayout();
 
+    // Containers to hold the display objects.
     std::vector<TopicDisplay> topic_displays_;
+    std::vector<HardwareDisplay> hardware_displays_;
+
+    // Container to store topic subscribers.
     std::map<std::string, ros::Subscriber> subscribers_;
+
+    // Member to track the current display mode.
+    DisplayMode current_mode_;
 };
 
-#endif // ROBOT_STATUS_TUI_H
+#endif // STATUS_TUI_H
