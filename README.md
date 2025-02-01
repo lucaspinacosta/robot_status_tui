@@ -2,7 +2,6 @@
 
 ![ROS Version](https://img.shields.io/badge/ROS-Noetic-brightgreen) [![CI Status](https://img.shields.io/badge/version-v0.0.1|dev|-yellow)]()
 
-A brief description of your ROS package and its purpose.
 
 **Key Functionality**:
 
