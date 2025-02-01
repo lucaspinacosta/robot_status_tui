@@ -1,0 +1,4 @@
+tf_static_list:
+  - "garmin garmin/range Garmin Down 50"
+want_hz:
+  - "bluefox/camera_info Bluefox Optflow 50"

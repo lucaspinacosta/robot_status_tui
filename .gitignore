@@ -1,0 +1,93 @@
+# ROS .gitignore template
+
+### ROS Build Artifacts ###
+/build/
+/devel/
+/install/
+*.swp
+*.swo
+*.swn
+*.pyc
+__pycache__/
+*.egg-info/
+*.catkin
+.catkin_workspace
+.rosinstall
+*.rosinstall
+
+### ROS Generated Files ###
+**/CMakeCache.txt
+**/CMakeFiles/
+**/Makefile
+**/cmake_install.cmake
+**/CTestTestfile.cmake
+**/catkin_generated/
+**/catkin/cmake/catkinConfig.cmake
+**/catkin/env.sh
+**/catkin/setup.*
+**/catkin/package.xml
+
+### IDE Specific ###
+# CLion
+.idea/
+cmake-build-*/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse
+.project
+.cproject
+.settings/
+
+# Others
+*.iml
+*.nproj
+*.sln
+*.suo
+*.user
+
+### Logs and Temporary Files ###
+*.log
+*.bag
+*.active
+*.rosconsole
+*.rostest
+*.test_results/
+*.jou
+*.ipynb_checkpoints/
+
+### Documentation Builds ###
+/doc/
+/docs/html/
+/docs/latex/
+/docs/xml/
+
+### Compiled Binaries ###
+*.o
+*.so
+*.a
+*.pyc
+*.pyd
+*.dll
+*.exe
+
+### ROS Package Specific ###
+# Ignore generated message/service files (generated in devel space)
+**/msg/*.msg
+**/srv/*.srv
+
+# Ignore auto-generated setup files
+**/_setup_util.py
+**/setup.*
+**/local_setup.*
+**/env.sh
+**/setup.bash
+**/setup.sh
+**/setup.zsh
+**/.setup.bash
+**/.setup.zsh
+
+### Catkin Tools ###
+.catkin_tools/

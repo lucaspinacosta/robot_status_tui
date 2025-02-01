@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="ingeniarius_robot_status" type="robot_status_node" name="ingeniarius_robot_status_node" output="screen">
+        <rosparam command="load" file="$(find ingeniarius_robot_status)/config/topics.yaml"/>
+    </node>
+</launch>
